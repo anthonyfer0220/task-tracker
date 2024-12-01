@@ -12,7 +12,7 @@ public class TaskManager {
         loadTasks();
     }
 
-    private void loadTasks() {
+    public void loadTasks() {
         File file = new File(fileName);
         if (file.exists()) {
             try (Reader reader = new FileReader(file)) {
@@ -23,7 +23,7 @@ public class TaskManager {
         }
     }
 
-    private void saveTasks() {
+    public void saveTasks() {
         try (Writer writer = new FileWriter(fileName)) {
             new Gson().toJson(tasks, writer);
         } catch (IOException e) {
@@ -31,14 +31,14 @@ public class TaskManager {
         }
     }
 
-    private void addTask(String description) {
+    public void addTask(String description) {
         int id = tasks.isEmpty() ? 1 : tasks.get(tasks.size() - 1).getId() + 1;
         tasks.add(new Task(id, description));
         saveTasks();
         System.out.println("Task added successfully (ID: " + id + ')');
     }
 
-    private void updateTask(int id, String description) {
+    public void updateTask(int id, String description) {
         Task task = tasks.get(id);
         if (task != null) {
             task.setDescription(description);
@@ -49,7 +49,7 @@ public class TaskManager {
         }
     }
 
-    private void deleteTask(int id) {
+    public void deleteTask(int id) {
         Task task = tasks.get(id);
         if (task != null) {
             tasks.remove(task);
@@ -60,7 +60,7 @@ public class TaskManager {
         }
     }
 
-    private void mark(int id, String status) {
+    public void mark(int id, String status) {
         Task task = tasks.get(id);
         if (task != null) {
             task.setStatus(status);
@@ -71,13 +71,13 @@ public class TaskManager {
         }
     }
 
-    private void listTasks() {
+    public void listTasks() {
         for (Task t : tasks) {
             System.out.println(t.getDescription());
         }
     }
 
-    private void listTasks(String status) {
+    public void listTasks(String status) {
         for (Task t : tasks) {
             if (t.getStatus().equals(status)) {
                 System.out.println(t.getDescription());
