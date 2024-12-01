@@ -13,6 +13,9 @@ public class TaskTracker {
                 case "add":
                     String taskDescription = args[1];
                     taskManager.addTask(taskDescription);
+                    break;
+                default:
+                    System.out.println("Task " + taskName + " not found");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
