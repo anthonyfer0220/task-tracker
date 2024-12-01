@@ -7,7 +7,7 @@ public class TaskTracker {
             return;
         }
 
-        int taskId = 0;
+        int taskId;
 
         String taskName = args[0];
         try {
