@@ -7,28 +7,41 @@ public class TaskTracker {
             return;
         }
 
+        int taskId = 0;
+
         String taskName = args[0];
         try {
             switch (taskName) {
-                case "add":
+                case "add" -> {
                     String taskDescription = args[1];
                     taskManager.addTask(taskDescription);
-                    break;
-                case "update":
-                    int taskId = Integer.parseInt(args[1]);
+                }
+                case "update" -> {
+                    taskId = Integer.parseInt(args[1]);
                     String taskDesc = args[2];
                     taskManager.updateTask(taskId, taskDesc);
-                    break;
-                case "delete":
-                    break;
-                case "mark-in-progress":
-                    break;
-                case "mark-done":
-                    break;
-                case "list":
-                    break;
-                default:
-                    System.out.println("Task " + taskName + " not found");
+                }
+                case "delete" -> {
+                    taskId = Integer.parseInt(args[1]);
+                    taskManager.deleteTask(taskId);
+                }
+                case "mark-in-progress" -> {
+                    taskId = Integer.parseInt(args[1]);
+                    taskManager.mark(taskId, "in-progress");
+                }
+                case "mark-done" -> {
+                    taskId = Integer.parseInt(args[1]);
+                    taskManager.mark(taskId, "done");
+                }
+                case "list" -> {
+                    if (args[1] == null) {
+                        taskManager.listTasks();
+                    } else {
+                        String status = args[1];
+                        taskManager.listTasks(status);
+                    }
+                }
+                default -> System.out.println("Task " + taskName + " not found");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
