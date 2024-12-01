@@ -14,6 +14,8 @@ public class TaskTracker {
                     String taskDescription = args[1];
                     taskManager.addTask(taskDescription);
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
