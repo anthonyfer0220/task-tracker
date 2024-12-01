@@ -14,11 +14,18 @@ public class TaskTracker {
                     String taskDescription = args[1];
                     taskManager.addTask(taskDescription);
                     break;
-                case "remove":
+                case "update":
+                    int taskId = Integer.parseInt(args[1]);
+                    String taskDesc = args[2];
+                    taskManager.updateTask(taskId, taskDesc);
+                    break;
+                case "delete":
+                    break;
+                case "mark-in-progress":
+                    break;
+                case "mark-done":
                     break;
                 case "list":
-                    break;
-                case "start":
                     break;
                 default:
                     System.out.println("Task " + taskName + " not found");
