@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
@@ -25,7 +26,8 @@ public class TaskManager {
 
     public void saveTasks() {
         try (Writer writer = new FileWriter(fileName)) {
-            new Gson().toJson(tasks, writer);
+            Gson gson = (new GsonBuilder()).setPrettyPrinting().create();
+            gson.toJson(this.tasks, writer);
         } catch (IOException e) {
             System.out.println("Error writing tasks file: " + e.getMessage());
         }
