@@ -9,7 +9,7 @@ public class TaskTracker {
 
         int taskId;
 
-        String taskName = args[0];
+        String taskName = args[0].toLowerCase();
         try {
             switch (taskName) {
                 case "add" -> {

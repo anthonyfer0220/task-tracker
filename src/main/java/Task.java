@@ -2,17 +2,11 @@ public class Task {
     private int id;
     private String description;
     private String status;
-//    private LocalDateTime createdAt;
-//    private LocalDateTime updatedAt;
 
     public Task(int id, String description) {
         this.id = id;
         this.description = description;
         this.status = "todo";
-/*
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
-*/
     }
 
     // Getters and Setters
@@ -24,14 +18,7 @@ public class Task {
 
     public String getStatus() { return status; }
 
-    public void setStatus(String status) {
-        this.status = status;
-//        this.updatedAt = LocalDateTime.now();
-    }
-
-//    public LocalDateTime getCreatedAt() { return createdAt; }
-//
-//    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setStatus(String status) { this.status = status; }
 
     @Override
     public String toString() {
